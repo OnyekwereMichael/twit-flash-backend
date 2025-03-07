@@ -3,23 +3,6 @@ import Message from "../models/message.model.js";
 import Notification from "../models/notification.model.js";
 import { v2 as cloudinary } from "cloudinary";
 
-// export const getMessages = async (req, res) => {
-//     try {
-//        const {id: userToChat} = req.params;
-//        const senderId = req.user._id;
-//        const messages = await Message.find({
-//           $or: [
-//               { sender: senderId, receiver: userToChat },
-//               { sender: userToChat, receiver: senderId }
-//           ]
-//       }).sort({ createdAt: 1 });
-//       res.status(200).json(messages);
-//     } catch (error) {
-//        console.log('Error', error);
-//        res.status(500).json({ error: error.message });
-//     } 
-// }
-
 export const getMessages = async (req, res) => {
    try {
      const { id: userToChatId } = req.params;

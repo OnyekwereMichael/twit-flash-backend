@@ -258,3 +258,33 @@ export const updatePost = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const searchPosts = async (req, res) => {
+    const { query } = req.query;
+    try {
+        if (!query) {
+            return res.status(400).json({ error: "Search query is required" });
+        }
+
+        const posts = await Post.find({
+            $or: [
+                { caption: { $regex: new RegExp(query, "i") } }, // Search in caption
+                { tags: { $regex: new RegExp(query, "i") } } // Search in tags
+            ]
+        })
+        .populate({
+            path: 'user',
+            select: '-password',
+        })
+        .populate({
+            path: 'comments.user',
+            select: '-password',
+        })
+        .sort({ createdAt: -1 }); // Sort by newest first
+
+        res.status(200).json({ success: true, data: posts });
+    } catch (error) {
+        console.error("Error searching posts:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
