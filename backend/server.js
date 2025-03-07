@@ -28,7 +28,7 @@ app.use(cookieParser())
 
 // CORS Configuration
 const corsOptions = {
-    origin:['https://twit-flash-backend.onrender.com', "http://localhost:3000" ], 
+    origin:['https://twit-flash-q7bo.vercel.app', "http://localhost:3000" ], 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     // credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']

@@ -6,13 +6,14 @@ import cors from 'cors';
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: ["http://localhost:3000", "https://twit-flash-backend-1.onrender.com"], credentials: true }));
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
-        methods: ["GET", "POST"],
+        origin: ["http://localhost:3000", "https://twit-flash-backend-1.onrender.com"],
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
+        allowedHeaders: ['Content-Type', 'Authorization']
     },
 });
 
