@@ -6,11 +6,11 @@ import cors from 'cors';
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors({ origin: ["http://localhost:3000", "https://twit-flash-backend-1.onrender.com"], credentials: true }));
+app.use(cors({origin:['https://twit-flash-q7bo.vercel.app', "http://localhost:3000" ], credentials: true }));
 
 const io = new Server(server, {
     cors: {
-        origin: ["http://localhost:3000", "https://twit-flash-backend-1.onrender.com"],
+        origin:['https://twit-flash-q7bo.vercel.app', "http://localhost:3000" ],
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
         allowedHeaders: ['Content-Type', 'Authorization']
