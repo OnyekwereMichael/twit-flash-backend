@@ -11,8 +11,10 @@ import cookieParser from 'cookie-parser';
 import { v2 as cloudinary } from 'cloudinary';
 import cors from 'cors';
 import { server, app } from './lib/utils/socket.js';
+import job from "./lib/cron/cron.js";
 
 dotenv.config()
+job.start()
 // const app = express();
 
 cloudinary.config({

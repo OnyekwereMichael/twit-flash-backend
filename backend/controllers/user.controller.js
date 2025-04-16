@@ -85,7 +85,7 @@ export const getSuggestedUsers = async (req, res) => {
       });
   
       // Select up to 4 users from the filtered list as suggestions
-      const suggestedUsers = filteredUsers.slice(0, 4);
+      const suggestedUsers = filteredUsers.slice(0, 6);
   
       // Remove the password field from the suggested users for security
       suggestedUsers.forEach((user) => (user.password = null));
